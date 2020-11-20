@@ -6,11 +6,18 @@ class EmployeeWage
 		echo "\n Welcome to Employee Wage Computation Program \n";
 	  }
 
-	  public function calculateDailyWages(){
-		$empCheck= rand(0,2);
+	  public function calculateMonthlyWages(){
+		 $totalEmpHrs = 0 ;
+		 $totalEmpWage = 0 ;
+		 $empWorkingDays=20;
 		$fullTime=1;
 		$partTime=2;
 		$ratePerHour=20;
+
+		for($day=0;$day<$empWorkingDays;$day++){
+
+		$empCheck= rand(0,2);
+
 		switch($empCheck){
 			case $fullTime:
 				$empHrs=8;
@@ -23,12 +30,13 @@ class EmployeeWage
 			default:
 			    $empHrs=0; 
 		}
-		  				
-		$empwage=$ratePerHour*$empHrs;
-		echo"\n employee daily Wages:". $empwage;
-	  }
-		  
+		$totalEmpHrs=$totalEmpHrs+$empHrs;
+	}
+			$totalEmpWage=$ratePerHour*$totalEmpHrs;
+		echo"\n employee Monthly Wages:". $totalEmpWage;		  		  
    }
+}
    $emp = new EmployeeWage();
-	  $emp->calculateDailyWages();	  
+	  $emp->calculateMonthlyWages();
+  	  
 ?>	
