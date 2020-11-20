@@ -11,19 +11,19 @@ class EmployeeWage
 		$fullTime=1;
 		$partTime=2;
 		$ratePerHour=20;
-		if($empCheck==$fullTime)
-		{
-			$empHrs=8;		  
+		switch($empCheck){
+			case $fullTime:
+				$empHrs=8;
+				 break;
+				 
+			case $partTime:
+				$empHrs=4;		    
+				break;
+				
+			default:
+			    $empHrs=0; 
 		}
-  
-		elseif($empCheck==$partTime)
-		{
-		  $empHrs=4;		    
-		}
-		else
-		{
-			$empHrs=0;
-		}
+		  				
 		$empwage=$ratePerHour*$empHrs;
 		echo"\n employee daily Wages:". $empwage;
 	  }
