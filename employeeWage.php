@@ -7,16 +7,19 @@ class EmployeeWage
 	  }
 
 	  public function calculateMonthlyWages(){
-		 $totalEmpHrs = 0 ;
+		 $emp_Working_Hrs = 0 ;
+		 $emp_Working_Days = 0 ;
 		 $totalEmpWage = 0 ;
-		 $empWorkingDays=20;
+		 $max_Working_Days=20;
+		 $max_Working_Hours=100;
+
 		$fullTime=1;
 		$partTime=2;
 		$ratePerHour=20;
 
-		for($day=0;$day<$empWorkingDays;$day++){
-
-		$empCheck= rand(0,2);
+		while( $emp_Working_Days < $max_Working_Days && $emp_Working_Hrs <= $max_Working_Hours ){		
+			$emp_Working_Days++;
+			$empCheck= rand(0,2);
 
 		switch($empCheck){
 			case $fullTime:
@@ -30,13 +33,12 @@ class EmployeeWage
 			default:
 			    $empHrs=0; 
 		}
-		$totalEmpHrs=$totalEmpHrs+$empHrs;
+		$emp_Working_Hrs=$emp_Working_Hrs+$empHrs;
 	}
-			$totalEmpWage=$ratePerHour*$totalEmpHrs;
+			$totalEmpWage=$ratePerHour*$emp_Working_Hrs;
 		echo"\n employee Monthly Wages:". $totalEmpWage;		  		  
    }
 }
-   $emp = new EmployeeWage();
-	  $emp->calculateMonthlyWages();
-  	  
+  $emp = new EmployeeWage();
+  $emp->calculateMonthlyWages();	  
 ?>	
