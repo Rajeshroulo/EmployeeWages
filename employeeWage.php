@@ -6,19 +6,23 @@ class EmployeeWage
 		echo "\n Welcome to Employee Wage Computation Program \n";
 	  }
 
-	  public function checkAttendance(){
-		$empCheck= rand(0,1);
+	  public function calculateDailyWages(){
+		$empCheck= rand(0,2);
+		$fullTime=1;
+		$partTime=2;
 		$ratePerHour=20;
-		if($empCheck==1)
+		if($empCheck==$fullTime)
 		{
-			echo"\n employee is present";
 			$empHrs=8;		  
 		}
   
+		elseif($empCheck==$partTime)
+		{
+		  $empHrs=4;		    
+		}
 		else
 		{
-		  echo"\n employee is absent";
-		  $empHrs=0;		    
+			$empHrs=0;
 		}
 		$empwage=$ratePerHour*$empHrs;
 		echo"\n employee daily Wages:". $empwage;
@@ -26,5 +30,5 @@ class EmployeeWage
 		  
    }
    $emp = new EmployeeWage();
-	  $emp->checkattendance();	  
+	  $emp->calculateDailyWages();	  
 ?>	
