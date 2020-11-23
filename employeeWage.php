@@ -38,7 +38,23 @@ class EmployeeWage
 			$totalEmpWage=$ratePerHour*$emp_Working_Hrs;
 		echo"\n employee Monthly Wages:". $totalEmpWage;		  		  
    }
+
+   function employeewages(){
+   if (($h = fopen("employeeData.csv", "r")) !== FALSE) 
+   {
+	 // Convert each line into the local $data variable
+	 while (($data = fgetcsv($h, 1000, ",")) !== FALSE) 
+	 {		
+		   var_dump($data);
+	 }
+	
+	 // Close the file
+	 fclose($h);
+   }
+
+}
 }
   $emp = new EmployeeWage();
-  $emp->calculateMonthlyWages();	  
+  $emp->calculateMonthlyWages();
+  $emp->employeewages();	  
 ?>	
