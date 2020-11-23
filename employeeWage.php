@@ -36,7 +36,7 @@ class EmployeeWage
 		$emp_Working_Hrs=$emp_Working_Hrs+$empHrs;
 	}
 			$totalEmpWage=$ratePerHour*$emp_Working_Hrs;
-		echo"\n employee Monthly Wages:". $totalEmpWage;		  		  
+		echo"\n employee Monthly Wages:". $totalEmpWage."\n";		  		  
    }
 
    function employeewages(){
@@ -45,7 +45,12 @@ class EmployeeWage
 	 // Convert each line into the local $data variable
 	 while (($data = fgetcsv($h, 1000, ",")) !== FALSE) 
 	 {		
-		   var_dump($data);
+		$file="employeeData.csv";
+		$csv= file_get_contents($file);
+		// takes a string of CSV data and returns a JSON representing an array of objects (one object per row)
+		$array = array_map("str_getcsv", explode("\n", $csv));
+		$json = json_encode($array);
+		print_r($json);
 	 }
 	
 	 // Close the file
