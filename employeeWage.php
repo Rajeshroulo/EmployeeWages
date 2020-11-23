@@ -49,8 +49,9 @@ class EmployeeWage
 		$csv= file_get_contents($file);
 		// takes a string of CSV data and returns a JSON representing an array of objects (one object per row)
 		$array = array_map("str_getcsv", explode("\n", $csv));
-		$json = json_encode($array);
-		print_r($json);
+		$fp = fopen('employeeDetails.json', 'w');
+  		fwrite($fp, json_encode($array));
+		fclose($fp);
 	 }
 	
 	 // Close the file
